@@ -1,0 +1,8 @@
+git config --global user.name "你的用户名"
+git config --global user.email "你的邮箱"
+生成ssh key
+运行 ssh-keygen -t rsa -C "你的邮箱" ，它会有三次等待你输入，直接回车即可。
+ssh -T git@github.com
+git remote add origin 你复制的地址
+执行 git push -u origin master 将本地仓库上传至Github的仓库并进行关联：
+以后想在commit后同步到Github上，只要直接执行 git push 就行啦：

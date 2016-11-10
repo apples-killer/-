@@ -1,0 +1,2 @@
+初次运行或者修改过setting.xml后
+mvn help:system
