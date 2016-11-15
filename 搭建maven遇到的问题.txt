@@ -1,2 +1,24 @@
 初次运行或者修改过setting.xml后
 mvn help:system
+
+mvn archetype:create -DgroupId=com.test -DartifactId=cmdmaven -DarchetypeArtifactId=maven-archetype-webapp
+mvn archetype:create -DgroupId=com.test -DartifactId=testse
+mvn archetype:create -DgroupId=com.learn -DartifactId=LearnNew -DarchetypeArtifactId=maven-archetype-quickstart
+mvn archetype:generate -DgroupId=com.test -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+找到Myeclipse的安装目录找到myeclipse.ini文件，把原有的内容最后几行如下：
+
+-vmargs
+-Xmx768m
+-XX:MaxPermSize=320m
+-XX:ReservedCodeCacheSize=64m
+-Dosgi.nls.warnings=ignore
+
+更改为：
+
+-vmargs
+-Xms1024m
+-Xmx1024m
+-XX:MaxPermSize=1024m
+-XX:ReservedCodeCacheSize=64m
+-Dosgi.nls.warnings=ignore
