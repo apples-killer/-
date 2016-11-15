@@ -1,0 +1,72 @@
+nginx安装
+
+环境：centos7、nginx
+
+ 
+1.下载nginx最新版本，www.nginx.org
+本文使用当前的最新版本：http://nginx.org/download/nginx-1.11.4.tar.gz
+2.nginx安装前置操作
+nginx使用make方式安装，安装之前有几个前置操作
+yum install gcc
+yum -y install pcre-devel
+yum install -y zlib-devel
+其他环境如果安装上面三个组件不行，根据./configure提示安装即可
+3.nginx编译和安装
+./configure
+make
+make install
+4.找到安装的nginx文件
+whereis nginx
+nginx: /usr/local/nginx
+nginx编译以后，把nginx生成到了/usr/local/nginx目录下，该目录下/usr/local/nginx/sbin/nginx为可执行文件
+5.nginx服务器操作
+cd /usr/local/nginx/sbin
+ 
+启动：./nginx
+停止：./nginx -s stop
+重启：./nginx -s reopen
+6.nginx其他操作
+输入命令：./nginx -h
+查看帮助：
+nginx version: nginx/1.11.4
+Usage: nginx [-?hvVtTq] [-s signal] [-c filename] [-p prefix] [-g directives]
+ 
+Options:
+  -?,-h         : this help
+  -v            : show version and exit
+  -V            : show version and configure options then exit
+  -t            : test configuration and exit
+  -T            : test configuration, dump it and exit
+  -q            : suppress non-error messages during configuration testing
+  -s signal     : send signal to a master process: stop, quit, reopen, reload
+  -p prefix     : set prefix path (default: /usr/local/nginx/)
+  -c filename   : set configuration file (default: conf/nginx.conf)
+  -g directives : set global directives out of configuration file
+7.验证安装成功
+执行命令：curl http://localhost
+如果出现下面内容则安装成功：
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
