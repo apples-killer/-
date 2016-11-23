@@ -1,0 +1,15 @@
+如果需要在一台机子上启动多个Tomcat服务器，在默认设置下肯定会发生端口冲突。为实现这个效果，只需修改conf子目录中的server.xml文件即可。共需修改三处： 
+
+(1).修改http访问端口（默认为8080端口）: 
+
+<Connector port=”8080” protocol=”HTTP/1.1″ 
+connectionTimeout=”20000″ 
+redirectPort=”8443″ URIEncoding=”gb2312″/> 
+
+(2).修改Shutdown端口（默认为8005端口）: 
+
+<Server port=”8005” shutdown=”SHUTDOWN”> 
+
+(3).修改JVM启动端口（默认为8009端口）: 
+
+<Connector port=”8009” protocol=”AJP/1.3″ redirectPort=”8443″ /> 
