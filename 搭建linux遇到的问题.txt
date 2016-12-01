@@ -4,6 +4,7 @@
 4.打war包，eclipse右击export
 5.可以通过除了localhost的方式访问mysql，grant ALL PRIVILEGES ON *.* to root@'%' identified by '123456' WITH GRANT OPTION;
 
+第一次安装，要修改 /etc/sysconfig/network-scripts
 
 1、关闭firewall：
 systemctl stop firewalld.service #停止firewall
@@ -43,20 +44,7 @@ centos7 firewall状态
  firewall-cmd --state
 
 
-mysql
-# wget http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
-# rpm -ivh mysql-community-release-el7-5.noarch.rpm
-# yum install mysql-community-server
-成功安装之后重启mysql服务
 
-# service mysqld restart
-初次安装mysql是root账户是没有密码的
-
-设置密码的方法
-
-# mysql -uroot
-mysql> set password for ‘root’@‘localhost’ = password(‘mypasswd’);
-mysql> exit
 
 
 1>注释掉bind
@@ -66,3 +54,5 @@ daemonize no
 3>禁用保护模式
 protected-mode no
 
+
+yum install lrzsz

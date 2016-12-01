@@ -1,0 +1,43 @@
+mysql
+# wget http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+# rpm -ivh mysql-community-release-el7-5.noarch.rpm
+# yum install mysql-community-server
+成功安装之后重启mysql服务
+
+# service mysqld restart
+初次安装mysql是root账户是没有密码的
+
+设置密码的方法
+
+# mysql -uroot
+mysql> set password for 'root'@'localhost' = password('123456');
+mysql> exit
+
+ 创建远程登陆用户并授权 :
+   mysql> grant all PRIVILEGES on *.* to root@'%' identified by '123456';
+   
+   
+   
+主从库配置
+
+reset slave  解决 Slave failed to initialize relay log info structure from the repository
+
+server-id=1
+log-bin=mysql-bin
+server-id：为主服务器A的ID值
+log-bin：二进制变更日值
+
+log_bin= mysql-bin
+server_id= 2
+relay_log= mysql-relay-bin
+log_slave_updates=1
+read_only = 1
+
+
+
+GRANT REPLICATION SLAVE ON *.* to 'mysync'@'%' identified by '123456';
+change master to master_host='192.168.233.128',master_user='mysync',master_password='123456',master_log_file='mysql-bin.000001',master_log_pos=720;
+
+show master status
+show slave status\G
+start slave
